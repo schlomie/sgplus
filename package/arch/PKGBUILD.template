@@ -1,0 +1,19 @@
+PACKAGER="Loren Schlomer <me@schlomie.com>"
+pkgname="sgplus"
+pkgver="{{version}}"
+pkgrel="{{build-number}}"
+pkgdesc="Convenience wrapper for supergenpass that adds password verification and copy/clear clipboard"
+arch=('any')
+url="https://www.schlomie.com/TBD"
+license=("MIT")
+install="${pkgname}.install"
+
+depends=("nodejs" "npm")
+
+source=("sgplus_{{version}}-{{build-number}}.tar.gz")
+sha1sums=("{{hash}}")
+
+package() {
+    install -d ${pkgdir}/opt
+    mv "${srcdir}/${pkgname}" "${pkgdir}/opt/${pkgname}"
+}

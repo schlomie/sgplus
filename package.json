@@ -1,0 +1,21 @@
+{
+  "name": "sgplus",
+  "version": "0.0.1",
+  "description": "Convenience wrapper for supergenpass that adds password verification and copy/clear clipboard",
+  "main": "index.js",
+  "author": "Loren Schlomer <me@schlomie.com>",
+  "license": "BSD",
+  "dependencies": {
+    "clipboardy": "^1.2.2",
+    "prompt-sync": "^4.1.5",
+    "supergenpass-lib": "^3.0.1",
+    "yargs": "^11.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-gzip": "^1.4.2",
+    "gulp-tar": "^2.1.0",
+    "pump": "^2.0.1"
+  }
+}

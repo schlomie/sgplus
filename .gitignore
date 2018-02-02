@@ -1,0 +1,8 @@
+node_modules
+build
+dist
+package/arch/PKGBUILD
+package/arch/pkg
+package/arch/src
+package/arch/*gz
+package/arch/*xz

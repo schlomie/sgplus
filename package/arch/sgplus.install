@@ -1,0 +1,16 @@
+post_install() {
+
+    link_path="/opt/sgplus"
+    ln -s ${link_path}/sgplus.js "/usr/local/bin/sgplus"
+
+    cd ${link_path}
+    npm install --production
+}
+
+post_remove() {
+
+    inst_path="/opt/sgplus"
+
+    rm -rf ${inst_path} ${link_path}
+    rm "/usr/local/bin/sgplus"
+}
