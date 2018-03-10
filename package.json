@@ -4,7 +4,7 @@
   "description": "Convenience wrapper for supergenpass that adds password verification and copy/clear clipboard",
   "main": "index.js",
   "author": "Loren Schlomer <me@schlomie.com>",
-  "license": "BSD",
+  "license": "MIT",
   "dependencies": {
     "clipboardy": "^1.2.2",
     "prompt-sync": "^4.1.5",
