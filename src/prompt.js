@@ -19,6 +19,22 @@ class Prompt {
         return uri1;
     }
 
+    static _getRounds(verify) {
+        let r1 = prompt.hide('Rounds: ');
+
+        if (!verify) {
+            return r1;
+        }
+
+        let r2 = prompt.hide('Repeat Rounds: ');
+
+        if (r1 != r2) {
+            throw 'Rounds do not match';
+        }
+
+        return r1;
+    }
+
     static _getMasterPass(verify) {
         let mp1 = prompt.hide('Master Password: ');
 
@@ -52,19 +68,24 @@ class Prompt {
     }
 
 
-    static ask(verify, useSecret, callback) {
+    static ask(verify, useSecret, useRounds, callback) {
 
         try {
 
             let uri = Prompt._getUri(verify);
             let mp = Prompt._getMasterPass(verify);
             let sec = null;
+            let rounds = null;
 
             if (useSecret) {
                 sec = Prompt._getSecret(verify);
             }
 
-            callback(null, uri, mp, null == sec ? undefined : sec);
+            if (useRounds) {
+                rounds = Prompt._getRounds(verify);
+            }
+
+            callback(null, uri, mp, sec, rounds);
 
         } catch (err) {
             callback(err);

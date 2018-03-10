@@ -10,15 +10,15 @@ module.exports = require('yargs')
         default: 24,
         description: 'Length of the generated password. Valid lengths are integers between 4 and 24 inclusive. Note that 23- and 24-character MD5-based passwords provide no additional entropy. (The value for those characters will always be A.'
     })
-    .option('algorithm', {
-        alias: 'a',
+    .option('method', {
+        alias: 'm',
         default: 'sha512',
         description: 'The hash algorithm to use, either md5 or sha512'
     })
     .option('rounds', {
         alias: 'r',
-        default: 10,
-        description: ''
+        default: false,
+        description: 'A boolean value directing whether or not to prompt for the number of hash rounds to be applied.  If not given, the default value of 10 is used.'
     })
     .option('subdomains', {
         default: true,

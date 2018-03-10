@@ -1,6 +1,6 @@
 {
   "name": "sgplus",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Convenience wrapper for supergenpass that adds password verification and copy/clear clipboard",
   "main": "index.js",
   "author": "Loren Schlomer <me@schlomie.com>",

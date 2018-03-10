@@ -7,7 +7,7 @@ const Clipboard = require('./clipboard');
 const spawn = require('child_process').spawn;
 
 
-Prompt.ask(args.verify === true, args.secret === true, (err, uri, mp, sec) => {
+Prompt.ask(args.verify === true, args.secret === true, args.rounds === true, (err, uri, mp, sec, rounds) => {
 
     if (err) {
         console.error(err);
@@ -16,13 +16,17 @@ Prompt.ask(args.verify === true, args.secret === true, (err, uri, mp, sec) => {
 
     let opts = {
         length: args.length,
-        method: args.algorithm,
+        method: args.method,
         removeSubdomains: false === args.subdomains ? false : true,
-        hashRounds: args.rounds
+        hashRounds: 10
     };
 
     if (sec && 'string' == typeof sec) {
         opts.secret = sec;
+    }
+
+    if (rounds) {
+        opts.hashRounds = rounds;
     }
 
     if ('string' != typeof uri || 'string' != typeof mp || 0 == uri.length || 0 == mp.length) {
