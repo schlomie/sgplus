@@ -1,7 +1,7 @@
 post_install() {
 
     link_path="/opt/sgplus"
-    ln -s ${link_path}/sgplus.js "/usr/local/bin/sgplus"
+    ln -s ${link_path}/js/sgplus.js "/usr/local/bin/sgplus"
 
     cd ${link_path}
     npm install --production
