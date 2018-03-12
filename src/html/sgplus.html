@@ -1,0 +1,80 @@
+<!doctype html>
+<meta charset="UTF-8">
+<html>
+<head>
+    <title>SGPlus</title>
+    <script src="../../dist/sgplus-web.js"></script>
+</head>
+<body>
+<div id="sgplus-app" class="container">
+    <div class="row jumbotron">
+        <div class="col-sm-9">
+            <p class="lead">SuperGenPass...</p>
+        </div>
+        <div class="col-sm-3 text-right">
+            <h1 class="text-right">Plus!</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12"><hr/></div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-sm-6">
+            <label for="url">URL:</label>
+            <input type="password" class="form-control" id="url" placeholder="URL" v-model="url">
+        </div>
+        <div class="form-group col-sm-6">
+            <label for="secret">Secret:</label>
+            <input type="password" class="form-control" id="secret" placeholder="Secret" v-model="secret">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-sm-6">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" v-model="password">
+        </div>
+        <div class="form-group col-sm-6">
+            <label for="rounds">Hash Rounds:</label>
+            <input type="password" class="form-control" id="rounds" placeholder="Hash Rounds" v-model="rounds">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-sm-6">
+            <label for="method">Hash Algorithm:</label>
+            <select id="method" class="form-control" v-model="method">
+                <option v-for="m in methods" v-bind:value="m" v-html="m"></option>
+            </select>
+        </div>
+        <div class="form-group col-sm-6">
+            <label for="length">Password Length:</label>
+            <input type="password" class="form-control" id="length" placeholder="Length" v-model="length">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-sm-6">
+            <label for="subdomains">Remove Sub Domains:</label>
+            <select id="subdomains" class="form-control" v-model="subdomains">
+                <option v-for="b in booleans" v-bind:value="b" v-html="b ? 'Yes' : 'No'"></option>
+            </select>
+        </div>
+        <div class="form-group col-sm-6">
+            <label for="clear-seconds">Clear Clipboard:</label>
+            <input type="text" class="form-control" id="clear-seconds" placeholder="Clear Clipboard in ..." v-model="clearSeconds">
+            <small class="form-text text-muted">The length in seconds the password will be on the clipboard.</small>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-sm-6">
+            <label for="clear-entries">Clear Entries:</label>
+            <input type="text" class="form-control" id="clear-entries" placeholder="Clear Entries" v-model="clearEntries">
+            <small class="form-text text-muted">The number of random entries that will be copied to the clipboard when clearing.</small>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-primary" @click="copyToClipboard">Copy to Clipboard</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
