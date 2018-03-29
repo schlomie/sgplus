@@ -26,8 +26,8 @@
     "pump": "^2.0.1",
     "style-loader": "^0.20.3",
     "underscore": "^1.8.3",
+    "uuid": "^3.2.1",
     "vue": "^2.5.15",
-    "vue-clipboard2": "0.0.9",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.11"
   }

@@ -1,7 +1,7 @@
 <!doctype html>
-<meta charset="UTF-8">
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>SGPlus</title>
     <script src="../../dist/sgplus-web.js"></script>
 </head>
@@ -21,59 +21,57 @@
     <div class="form-row">
         <div class="form-group col-sm-6">
             <label for="url">URL:</label>
-            <input type="password" class="form-control" id="url" placeholder="URL" v-model="url">
+            <input type="password" class="form-control" id="url" placeholder="URL" v-model="url" @keyup="generatePassword">
         </div>
         <div class="form-group col-sm-6">
             <label for="secret">Secret:</label>
-            <input type="password" class="form-control" id="secret" placeholder="Secret" v-model="secret">
+            <input type="password" class="form-control" id="secret" placeholder="Secret" v-model="secret" @keyup="generatePassword">
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-sm-6">
             <label for="password">Password:</label>
-            <input type="password" class="form-control" id="password" placeholder="Password" v-model="password">
+            <input type="password" class="form-control" id="password" placeholder="Password" v-model="password" @keyup="generatePassword">
         </div>
         <div class="form-group col-sm-6">
             <label for="rounds">Hash Rounds:</label>
-            <input type="password" class="form-control" id="rounds" placeholder="Hash Rounds" v-model="rounds">
+            <input type="password" class="form-control" id="rounds" placeholder="Hash Rounds" v-model="rounds" @keyup="generatePassword">
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-sm-6">
             <label for="method">Hash Algorithm:</label>
-            <select id="method" class="form-control" v-model="method">
+            <select id="method" class="form-control" v-model="method" @change="generatePassword">
                 <option v-for="m in methods" v-bind:value="m" v-html="m"></option>
             </select>
         </div>
         <div class="form-group col-sm-6">
             <label for="length">Password Length:</label>
-            <input type="password" class="form-control" id="length" placeholder="Length" v-model="length">
+            <input type="password" class="form-control" id="length" placeholder="Length" v-model="length" @keyup="generatePassword">
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-sm-6">
             <label for="subdomains">Remove Sub Domains:</label>
-            <select id="subdomains" class="form-control" v-model="subdomains">
+            <select id="subdomains" class="form-control" v-model="subdomains" @change="generatePassword">
                 <option v-for="b in booleans" v-bind:value="b" v-html="b ? 'Yes' : 'No'"></option>
             </select>
         </div>
-        <div class="form-group col-sm-6">
-            <label for="clear-seconds">Clear Clipboard:</label>
-            <input type="text" class="form-control" id="clear-seconds" placeholder="Clear Clipboard in ..." v-model="clearSeconds">
-            <small class="form-text text-muted">The length in seconds the password will be on the clipboard.</small>
-        </div>
+
     </div>
-    <div class="form-row">
-        <div class="form-group col-sm-6">
-            <label for="clear-entries">Clear Entries:</label>
-            <input type="text" class="form-control" id="clear-entries" placeholder="Clear Entries" v-model="clearEntries">
-            <small class="form-text text-muted">The number of random entries that will be copied to the clipboard when clearing.</small>
-        </div>
+    <div class="text-center">
+        <button type="button" class="copy-password btn btn-primary" @click="copy">Copy to Clipboard</button>
+        <button type="button" class="btn btn-warning" @click="reset">Reset</button>
     </div>
-    <div class="form-row">
-        <div class="col-sm-6">
-            <button type="button" class="btn btn-primary" @click="copyToClipboard">Copy to Clipboard</button>
+    <hr/>
+    <div class="alert alert-danger">
+        <div>
+            <strong>WARNING:</strong> Due to browser permissions regarding the clipboard API, generated passwords are <strong>NOT</strong>
+            automatically cleared from the clipboard. Click <a href="#" @click.prevent="clearClipboard">here</a> to manually
+            replace the contents of the clipboard with random gibberish.  You may need to click this a number of times if you are using a
+            clipboard manager which tracks the last X entries.
         </div>
+        <div><small class="text-muted">Note: Reset will also clear the clipboard.</small></div>
     </div>
 </div>
 </body>
